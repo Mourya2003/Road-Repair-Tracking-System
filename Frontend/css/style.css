@@ -1,13 +1,13 @@
 body {
     display: flex;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f0f2f5;
     margin: 0;
 }
 
 .sidebar {
     width: 250px;
-    background: #673AB7;
+    background: #343a40;
     color: white;
     height: 100vh;
     padding: 20px;
@@ -34,6 +34,11 @@ body {
     display: block;
 }
 
+.sidebar ul li a:hover {
+    background-color: #495057;
+    border-radius: 4px;
+}
+
 .main-content {
     margin-left: 260px;
     padding: 20px;
@@ -42,7 +47,7 @@ body {
 
 h1 {
     text-align: center;
-    color: #2196F3;
+    color: #007bff;
 }
 
 .dashboard-cards {
@@ -53,7 +58,7 @@ h1 {
 }
 
 .card {
-    background: linear-gradient(45deg, #002aff, #007bff);
+    background: linear-gradient(45deg, #007bff, #00c6ff);
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -64,5 +69,5 @@ h1 {
 .card p {
     font-size: 2rem;
     font-weight: bold;
-    color: #00FF00;
+    color: #ffffff;
 }
