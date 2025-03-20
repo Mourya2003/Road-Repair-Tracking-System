@@ -3,62 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+    <title>Login - Road Repair Tracking System</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #5c67f2;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4a54e1;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+        .toggle {
+            background: none;
+            border: none;
+            color: #5c67f2;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Dashboard</h2>
-        <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Users</a></li>
-            <li><a href="#">Residents</a></li>
-            <li><a href="#">Supervisors</a></li>
-            <li><a href="#">Admins</a></li>
-            <li><a href="#">Complaints</a></li>
-            <li><a href="#">Repairs</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Updates</a></li>
-        </ul>
+    <div class="container" id="loginContainer">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+            
+            <button type="submit">Login</button>
+            <p id="errorMessage" class="error-message"></p>
+            <button type="button" class="toggle" onclick="toggleForms()">Create an account</button>
+        </form>
     </div>
+    
+    <div class="container" id="registerContainer" style="display: none;">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <label for="newUsername">Username</label>
+            <input type="text" id="newUsername" required>
+            
+            <label for="role">Role</label>
+            <select id="role">
+                <option value="resident">Resident</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="admin">Administrator</option>
+            </select>
+            
+            <label for="newPassword">Password</label>
+            <input type="password" id="newPassword" required>
+            
+            <button type="submit">Register</button>
+            <p id="registerMessage" class="error-message"></p>
+            <button type="button" class="toggle" onclick="toggleForms()">Back to Login</button>
+        </form>
+    </div>
+    
+    <script>
+        function toggleForms() {
+            document.getElementById("loginContainer").style.display = 
+                document.getElementById("loginContainer").style.display === "none" ? "block" : "none";
+            document.getElementById("registerContainer").style.display = 
+                document.getElementById("registerContainer").style.display === "none" ? "block" : "none";
+        }
 
-    <div class="main-content">
-        <h1>Welcome to Admin Dashboard</h1>
-        <div class="dashboard-cards">
-            <div class="card">
-                <h3>Ongoing Repairs</h3>
-                <p id="ongoingRepairs">1</p>
-            </div>
-            <div class="card">
-                <h3>Pending Repairs</h3>
-                <p id="pendingRepairs">1</p>
-            </div>
-            <div class="card">
-                <h3>Resources</h3>
-                <p id="resources">100</p>
-            </div>
-            <div class="card">
-                <h3>Users</h3>
-                <p id="users">5</p>
-            </div>
-            <div class="card">
-                <h3>Residents</h3>
-                <p id="residents">2</p>
-            </div>
-            <div class="card">
-                <h3>Supervisors</h3>
-                <p id="supervisors">1</p>
-            </div>
-            <div class="card">
-                <h3>Admins</h3>
-                <p id="admins">1</p>
-            </div>
-            <div class="card">
-                <h3>Complaints</h3>
-                <p id="complaints">2</p>
-            </div>
-        </div>
-    </div>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            const users = JSON.parse(localStorage.getItem("users")) || {};
+            if (users[username] && users[username].password === password) {
+                alert("Login successful");
+                window.location.href = "dashboard.html";
+            } else {
+                errorMessage.textContent = "Invalid username or password";
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const newUsername = document.getElementById('newUsername').value;
+            const role = document.getElementById('role').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const registerMessage = document.getElementById('registerMessage');
+            
+            let users = JSON.parse(localStorage.getItem("users")) || {};
+            if (users[newUsername]) {
+                registerMessage.textContent = "Username already exists!";
+            } else {
+                users[newUsername] = { password: newPassword, role: role };
+                localStorage.setItem("users", JSON.stringify(users));
+                alert("Registration successful! You can now log in.");
+                toggleForms();
+            }
+        });
+    </script>
 </body>
 </html>
