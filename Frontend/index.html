@@ -3,14 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RRTS - Road Repair Tracking</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
-    <h1>Road Repair Tracking System</h1>
-    <button onclick="fetchData()">Fetch Repair Requests</button>
-    <div id="requests"></div>
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Users</a></li>
+            <li><a href="#">Residents</a></li>
+            <li><a href="#">Supervisors</a></li>
+            <li><a href="#">Admins</a></li>
+            <li><a href="#">Complaints</a></li>
+            <li><a href="#">Repairs</a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Updates</a></li>
+        </ul>
+    </div>
 
-    <script src="js/script.js"></script>
+    <div class="main-content">
+        <h1>Welcome to Admin Dashboard</h1>
+        <div class="dashboard-cards">
+            <div class="card">
+                <h3>Ongoing Repairs</h3>
+                <p id="ongoingRepairs">1</p>
+            </div>
+            <div class="card">
+                <h3>Pending Repairs</h3>
+                <p id="pendingRepairs">1</p>
+            </div>
+            <div class="card">
+                <h3>Resources</h3>
+                <p id="resources">100</p>
+            </div>
+            <div class="card">
+                <h3>Users</h3>
+                <p id="users">5</p>
+            </div>
+            <div class="card">
+                <h3>Residents</h3>
+                <p id="residents">2</p>
+            </div>
+            <div class="card">
+                <h3>Supervisors</h3>
+                <p id="supervisors">1</p>
+            </div>
+            <div class="card">
+                <h3>Admins</h3>
+                <p id="admins">1</p>
+            </div>
+            <div class="card">
+                <h3>Complaints</h3>
+                <p id="complaints">2</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
