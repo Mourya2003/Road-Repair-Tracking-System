@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Repair Request</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Create Road Repair Request</h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="view_reports.html">View Reports</a></li>
+                <li><a href="update_resources.html">Update Resources</a></li>
+                <li><a href="statistics.html">View Statistics</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Enter Repair Request</h2>
+        <form action="submit_repair_request.html" method="post">
+            <label for="area">Area of Complaint:</label>
+            <input type="text" id="area" name="area" required><br><br>
+
+            <label for="complaint_details">Complaint Details:</label>
+            <textarea id="complaint_details" name="complaint_details" required></textarea><br><br>
+
+            <label for="severity">Severity Level:</label>
+            <select id="severity" name="severity" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select><br><br>
+
+            <label for="priority">Priority Level:</label>
+            <select id="priority" name="priority" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select><br><br>
+
+            <label for="type_of_locality">Type of Locality:</label>
+            <select id="type_of_locality" name="type_of_locality" required>
+                <option value="commercial">Commercial</option>
+                <option value="busy">Busy</option>
+                <option value="deserted">Deserted</option>
+            </select><br><br>
+
+            <button type="submit">Submit Repair Request</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Road Repair & Tracking System</p>
+    </footer>
+</body>
+</html>
